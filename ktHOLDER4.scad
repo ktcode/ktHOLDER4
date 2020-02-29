@@ -17,8 +17,9 @@ hh = 50;
 
 
 
-translate([0, 0, 0]) A();
+//translate([0, 0, 0]) A();
 //translate([25+5, 0, 0]) B();
+translate([0, -20, 0]) C();
 
 module A()
 {
@@ -71,3 +72,49 @@ module B()
     }
 }
 
+module C()
+{
+    difference()
+    {
+        union()
+        {
+            difference()
+            {
+                union()
+                {
+                    translate([0, 0, 7.5]) cylinder(h=15, r=28/2, center=true, $fn=300);
+                    rotate([0, 0, -24]) translate([25/2, 0, 7.5]) cube([10, panel_thick, 15], center=true);
+                    rotate([0, 0, -48]) translate([25/2, 0, 7.5]) cube([15, panel_thick, 15], center=true);
+                    rotate([0, 0, -72]) translate([25/2, 0, 7.5]) cube([15, panel_thick, 15], center=true);
+                    rotate([0, 0, -96]) translate([25/2, 0, 7.5]) cube([15, panel_thick, 15], center=true);
+                    rotate([0, 0, -120]) translate([25/2, 0, 7.5]) cube([10, panel_thick, 15], center=true);
+                    rotate([0, 0, -144]) translate([25/2, 0, 7.5]) cube([10, panel_thick, 15], center=true);
+                }
+                
+                //dell
+                cylinder(h=30+gap2, r=24/2, center=true, $fn=300);
+                translate([-30, -9.4, -50]) rotate([0, 0, 6]) cube([100, 100, 100]);
+                //#translate([-30, -60, -105]) cube([100, 100, 100]);
+                //#translate([-30, -60, 5]) cube([100, 100, 100]);
+            }
+            
+            difference()
+            {
+                union()
+                {
+                    translate([0, 0, 7.5]) cylinder(h=15, r=40/2, center=true, $fn=300);
+                }
+                
+                //dell
+                cylinder(h=30+gap2, r=36/2, center=true, $fn=300);
+                #translate([-20, 30, -50]) rotate([0, 0, -52.5]) cube([100, 100, 100]);
+                translate([0, 30, -50]) rotate([0, 0, -183.5]) cube([100, 100, 100]);
+            }
+            
+        }
+        
+        //dell
+        translate([-24+panel_thick, 4-gap1, -20-gap1]) cube([50-panel_thick*3, panel_thick+gap2, 15]);
+        translate([36, 4-gap1, -20-gap1]) rotate([0, 7, 0]) cube([50, panel_thick+gap2, 50]);
+    }
+}
